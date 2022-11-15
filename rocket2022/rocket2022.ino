@@ -15,23 +15,26 @@ bool sLock = true;
 byte RelayCount = 0;
 byte SensorCount=0;
 
+float P2High(float p,float p0,float t){
+  return (pow((p0/p),1/5.257)-1.0)*(t+273.15))/0.0065;
+  }
+
 void setup() {
-  pinMode(myRelay, OUTPUT);
-  digitalWrite(myRelay, LOW);
+  mySerial.begin(115200);
+  pinMode(myRelay, OUTPUT);digitalWrite(myRelay, LOW);
 
   pinMode(LEDR, OUTPUT); digitalWrite(LEDR, HIGH);
   pinMode(LEDG, OUTPUT); digitalWrite(LEDG, HIGH);
   pinMode(LEDB, OUTPUT); digitalWrite(LEDB, HIGH);
-
-  mySerial.begin(115200);
   
   if (myIMU.begin() != 0) {
-    Serial.println("Device error");
+    Serial.println("Device(IMU) error");
   } else {
-    Serial.println("Device OK!");
+    Serial.println("Device(IMU) OK!");
   }
   
     myDPS310.begin(Wire);
+    Serial.println("Device(Pressure Sensor) Init Complete!");
 
   // put your setup code here, to run once:
   Scheduler.startLoop(loop_alive_LED);
