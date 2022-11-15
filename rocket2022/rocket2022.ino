@@ -16,7 +16,7 @@ float p0;
 bool sLock = true;
 byte RelayCount = 0;
 byte SensorCount = 0;
-
+byte PcCount = 0;
 float P2High(float p, float p0, float t) {
   return (pow((p0 / p), 1 / 5.257) - 1.0) * (t + 273.15)) / 0.0065;
 }
@@ -103,21 +103,21 @@ void loop_alive_LED() {
   if (sLock) {  //ロックされている場合
     digitalWrite(LEDG, LOW);
     delay(100);
-    digitalWrite(LEDG, HIGH);
+    if(PcCount!=0)digitalWrite(LEDG, HIGH);
     delay(100);
   }
   else {  //ロックが解除されている場合
     digitalWrite(LEDR, LOW);
     delay(100);
-    digitalWrite(LEDR, HIGH);
+        if(PcCount!=0)digitalWrite(LEDR, HIGH);
     delay(100);
   }
-}
 
-// Task no.3: accept commands from Serial port
-// '0' turns off LED
-// '1' turns on LED
+if(PcCount!=0)PcCount--;
+  }
+
 void loop_Rccv() {
+//受信したらPcCountを150で追加
   if (Serial.available()) {
     String str = Serial.readString();
     str.trim();
@@ -134,10 +134,6 @@ void loop_Rccv() {
       Serial.println("Led turned on!");
     }
   }
-
-  // IMPORTANT:
-  // We must call 'yield' at a regular basis to pass
-  // control to other tasks.
   yield();
 }
 void loop_Relay() {
@@ -148,5 +144,6 @@ void loop_Relay() {
   else {
     digitalWrite(myRelay, LOW);
   }
+
   delay(100);
 }
