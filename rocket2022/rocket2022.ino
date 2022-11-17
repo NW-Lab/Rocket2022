@@ -51,7 +51,7 @@ void setup() {
   myDps.configurePressure(DPS310_128HZ, DPS310_8SAMPLES);
   myDps.configureTemperature(DPS310_128HZ, DPS310_8SAMPLES);
   while ( !myDps.pressureAvailable()) {
-     delay(1);
+    delay(1);
   }
   delay(1000);
   dps_pressure->getEvent(&pressure_event);
@@ -65,7 +65,7 @@ void setup() {
 
 void loop() {
   int16_t ret;
-   sensors_event_t temp_event, pressure_event;
+  sensors_event_t temp_event, pressure_event;
   float pressure, temp;
   //Sensor用
   Serial.print(myIMU.readFloatAccelX(), 3);
@@ -81,12 +81,12 @@ void loop() {
   Serial.print(myIMU.readFloatGyroZ(), 3);
   Serial.println();
 
-while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
-delay(1);
-}
+  while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
+    delay(1);
+  }
   myDps.getEvents(&temp_event, &pressure_event);
-  temp=temp_event.temperature;
-  pressure=pressure_event.pressure;
+  temp = temp_event.temperature;
+  pressure = pressure_event.pressure;
   Serial.print("Temperature: ");
   Serial.print(temp);
   Serial.println(" degrees of Celsius");
@@ -96,10 +96,10 @@ delay(1);
   Serial.print(P2High(pressure, pressureInit, temp));
 
   if (SensorCount > 0) {
-  delay(100-8*10000/128);
+    delay(100 - 62);
     SensorCount--;
   } else {
-  delay(1000-8*10000/128);
+    delay(1000 - 62);
   }
 
 }
@@ -122,24 +122,44 @@ void loop_alive_LED() {
 }
 
 void loop_Rcv() {
-  //受信したらPcCountを150で追加
+
   if (Serial.available()) {
-    String str = Serial.readString();
+    String str = Serial.readStringUntil('\n');
     str.trim();
-    if (str.length() == 3) {
-      //if (str.
+    if (str.length() > 0) {
+      PcCount = 150; //受信したらPcCountを150(1.5秒)を追加
+      str.toLowerCase();//小文字に変換
+      if (str.equals("reset")) {
+        Serial.println("\n!!!Reset!!!");
+        sensors_event_t  pressure_event;
+        while ( !myDps.pressureAvailable()) {
+          delay(1);
+        }
+        dps_pressure->getEvent(&pressure_event);
+        pressureInit = pressure_event.pressure;
+      }
+      else if (str.equals("unlock")) {
+        Serial.println("\n***unLock***");
+        sLock = false;
+      }
+      else if (str.equals("lock")) {
+        Serial.println("\n!!!Lock!!!");
+        sLock = true;
+      }
+      else if (str.equals("relayon")) {
+        Serial.println("\n***Relay On***");
+        SensorCount = 150; //15秒
+        RelayCount = 30; //3秒
+      }
+      else if (str.equals("relayoff")) {
+        Serial.println("\n!!!Relay Off!!!");
+        RelayCount = 0; //0秒-->Off
+        digitalWrite(myRelay, LOW);
+
+      }
+
     }
   }
-  // if
-  //   if (c == '0') {
-  //       //  digitalWrite(led3, LOW);
-  //       Serial.println("Led turned off!");
-  //     }
-  //   if (c == '1') {
-  //  digitalWrite(led3, HIGH);
-  //      Serial.println("Led turned on!");
-  //    }
-  //  }
   yield();
 }
 void loop_Relay() {
