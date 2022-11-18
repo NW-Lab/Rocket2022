@@ -10,8 +10,12 @@
 
 ## 開発環境
 
-Arduino 1.8.19
- Board 
+### Arduino 1.8.19
+#### Board
+ Seeed nRF52 mbed enable boards --> Seeed XIAO BLE sense
+#### Library
+-   Seeed_Arduino_LSM6DS3 Library
+-   Adafruit DPS310
  
  
 ## リンク
