@@ -19,8 +19,10 @@ float pressureInit;
 //Status
 bool sLock = true;
 byte RelayCount = 0;
-byte SensorCount = 0;
+int SensorCount = 0;
 byte PcCount = 0;
+float sRSSI=0.0;
+float sBattery=0.0;
 
 //Function
 float P2High(float pressure, float pressureInit, float temp) {
@@ -68,7 +70,126 @@ void loop() {
   sensors_event_t temp_event, pressure_event;
   float pressure, temp;
   //Sensor用
-  Serial.print(myIMU.readFloatAccelX(), 3);
+  Serial.print("[{");
+  Serial.print("\"lock\":");
+  if(sLock)Serial.print("true");
+  else Serial.print("false");
+  Serial.println("}]");
+  
+   Serial.print("[{\"AccelX\":");
+  Serial.print(myIMU.readFloatAccelX(),3);
+  Serial.print(',');
+
+   Serial.print("\"AccelY\":");
+  Serial.print(myIMU.readFloatAccelY()),3;
+  Serial.print(',');
+
+    Serial.print("\"AccelZ\":");
+  Serial.print(myIMU.readFloatAccelZ(),3);
+  Serial.println("}]");
+
+    Serial.print("[{\"GyroX\":");
+  Serial.print(myIMU.readFloatGyroX(),3);
+  Serial.print(',');
+
+    Serial.print("\"GyroY\":");
+  Serial.print(myIMU.readFloatGyroY(),3);
+  Serial.print(',');
+
+    Serial.print("\"GyroZ\":");
+  Serial.print(myIMU.readFloatGyroZ(),3);
+  Serial.println("}]");
+
+
+  while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
+    delay(1);
+  }
+  myDps.getEvents(&temp_event, &pressure_event);
+  temp = temp_event.temperature;
+  pressure = pressure_event.pressure;
+
+   Serial.print("[{\"Temperature\":");
+  Serial.print(temp,1);
+  Serial.print(',');
+
+    Serial.print("\"Pressure\":");
+  Serial.print(pressure,2);
+  Serial.print(',');
+
+    Serial.print("\"Height\":");
+  Serial.print(P2High(pressure, pressureInit, temp),2);
+  Serial.println("}]");
+
+    Serial.print("[{\"RSSI\":");
+  Serial.print(sRSSI,2);
+  Serial.print(',');
+
+    Serial.print("\"Battery\":");
+  Serial.print(sBattery,2);
+  
+  Serial.println("}]");
+ /* 
+  //Sensor用
+  Serial.print("[{");
+  Serial.print("\"lock\":");
+  Serial.print(sLock);
+  Serial.print(',');
+
+   Serial.print("\"AccelX\":");
+  Serial.print(myIMU.readFloatAccelX(),3);
+  Serial.print(',');
+
+   Serial.print("\"AccelY\":");
+  Serial.print(myIMU.readFloatAccelY()),3;
+  Serial.print(',');
+
+    Serial.print("\"AccelZ\":");
+  Serial.print(myIMU.readFloatAccelZ(),3);
+  Serial.print(',');
+
+    Serial.print("\"GyroX\":");
+  Serial.print(myIMU.readFloatGyroX(),3);
+  Serial.print(',');
+
+    Serial.print("\"GyroY\":");
+  Serial.print(myIMU.readFloatGyroY(),3);
+  Serial.print(',');
+
+    Serial.print("\"GyroZ\":");
+  Serial.print(myIMU.readFloatGyroZ(),3);
+  Serial.print(',');
+
+
+  while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
+    delay(1);
+  }
+  myDps.getEvents(&temp_event, &pressure_event);
+  temp = temp_event.temperature;
+  pressure = pressure_event.pressure;
+
+    Serial.print("\"Temperature\":");
+  Serial.print(temp,1);
+  Serial.print(',');
+
+    Serial.print("\"Pressure\":");
+  Serial.print(pressure,2);
+  Serial.print(',');
+
+    Serial.print("\"Height\":");
+  Serial.print(P2High(pressure, pressureInit, temp),2);
+  Serial.print(',');
+
+    Serial.print("\"RSSI\":");
+  Serial.print(sRSSI,2);
+  Serial.print(',');
+
+    Serial.print("\"Battery\":");
+  Serial.print(sBattery,2);
+  
+  Serial.println("}]");
+*/
+/*****  
+ Serial.print(myIMU.readFloatAccelX(), 3);
   Serial.print(',');
   Serial.print(myIMU.readFloatAccelY(), 3);
   Serial.print(',');
@@ -94,12 +215,13 @@ void loop() {
   Serial.print(pressure);
   Serial.print("/ height: ");
   Serial.print(P2High(pressure, pressureInit, temp));
-
+*****/
   if (SensorCount > 0) {
-    delay(100 - 62);
+//    delay(100 - 62);
+    delay(100);
     SensorCount--;
   } else {
-    delay(1000 - 62);
+    delay(1000);
   }
 
 }
@@ -145,19 +267,24 @@ void loop_Rcv() {
       else if (str.equals("lock")) {
         Serial.println("\n!!!Lock!!!");
         sLock = true;
+         RelayCount = 0;
       }
       else if (str.equals("relayon")) {
         Serial.println("\n***Relay On***");
+        if(!sLock){
         SensorCount = 150; //15秒
         RelayCount = 30; //3秒
+        }
       }
       else if (str.equals("relayoff")) {
         Serial.println("\n!!!Relay Off!!!");
         RelayCount = 0; //0秒-->Off
         digitalWrite(myRelay, LOW);
-
       }
-
+      else if (str.equals("fast")) {
+        Serial.println("\n!!!Sensor Fast 30s!!!");
+        SensorCount = 300; //30秒
+      }
     }
   }
   yield();
