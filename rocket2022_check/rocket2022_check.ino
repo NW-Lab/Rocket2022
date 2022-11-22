@@ -1,18 +1,18 @@
 #include <Scheduler.h>
 #include "LSM6DS3.h"
-#include <Adafruit_DPS310.h>
+//#include <Adafruit_DPS310.h>
 #include "Wire.h"
 
 LSM6DS3 myIMU(I2C_MODE, 0x6A);    //I2C device address 0x6A
 
-Adafruit_DPS310 myDps;
-Adafruit_Sensor *dps_temp = myDps.getTemperatureSensor();
-Adafruit_Sensor *dps_pressure = myDps.getPressureSensor();
+//Adafruit_DPS310 myDps;
+//Adafruit_Sensor *dps_temp = myDps.getTemperatureSensor();
+//Adafruit_Sensor *dps_pressure = myDps.getPressureSensor();
 
 float pressureInit;
 
-//#define mySerial SerialUSB
-#define mySerial Serial1
+#define mySerial SerialUSB
+//#define mySerial Serial1
 #define myRelay D1
 
 //Status
@@ -43,20 +43,20 @@ void setup() {
     Serial.println("Device(IMU) OK!");
   }
 
-  if (! myDps.begin_I2C()) {
-    Serial.println("Failed to find DPS");
-    while (1) yield();
-  }
+//  if (! myDps.begin_I2C()) {
+//    Serial.println("Failed to find DPS");
+//    while (1) yield();
+//  }
   Serial.println("DPS310 OK!");
-  sensors_event_t  pressure_event;
-  myDps.configurePressure(DPS310_128HZ, DPS310_8SAMPLES);
-  myDps.configureTemperature(DPS310_128HZ, DPS310_8SAMPLES);
-  while ( !myDps.pressureAvailable()) {
-    delay(1);
-  }
+ // sensors_event_t  pressure_event;
+  //myDps.configurePressure(DPS310_128HZ, DPS310_8SAMPLES);
+ // myDps.configureTemperature(DPS310_128HZ, DPS310_8SAMPLES);
+ // while ( !myDps.pressureAvailable()) {
+ //   delay(1);
+ // }
   delay(1000);
-  dps_pressure->getEvent(&pressure_event);
-  pressureInit = pressure_event.pressure;
+ // dps_pressure->getEvent(&pressure_event);
+//  pressureInit = pressure_event.pressure;
 
   // put your setup code here, to run once:
   Scheduler.startLoop(loop_alive_LED);
@@ -65,8 +65,9 @@ void setup() {
 }
 
 void loop() {
+static  float p=1000.0,t=10.0,h=0.0;
   int16_t ret;
-  sensors_event_t temp_event, pressure_event;
+//  sensors_event_t temp_event, pressure_event;
   float pressure, temp;
   //Sensor用
   mySerial.print("[{");
@@ -103,24 +104,32 @@ void loop() {
   mySerial.println("}]");
 
 
-  while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
+//  while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
     delay(1);
-  }
-  myDps.getEvents(&temp_event, &pressure_event);
-  temp = temp_event.temperature;
-  pressure = pressure_event.pressure;
+//  }
+//  myDps.getEvents(&temp_event, &pressure_event);
+//  temp = temp_event.temperature;
+//  pressure = pressure_event.pressure;
 
   mySerial.print("[{\"Temperature\":");
-  mySerial.print(temp, 1);
+  mySerial.print(t, 1);
   mySerial.print(',');
 
   mySerial.print("\"Pressure\":");
-  mySerial.print(pressure, 2);
+  mySerial.print(p, 2);
   mySerial.print(',');
 
   mySerial.print("\"Height\":");
-  mySerial.print(P2High(pressure, pressureInit, temp), 2);
+  mySerial.print(h, 2);
   mySerial.println("}]");
+
+p+=0.15;
+t+=0.2;
+h+=0.10;
+
+if(p>1020)p=1000.0;
+if(t>25)t=10.0;
+if(h>2)h=0.0;
 
   mySerial.print("[{\"RSSI\":");
   mySerial.print(sRSSI, 2);
@@ -255,28 +264,28 @@ void loop_Rcv() {
       str.toLowerCase();//小文字に変換
       if (str.equals("reset")) {
         mySerial.println("!reset");
-        Serial.println("**Reset**");
-        sensors_event_t  pressure_event;
-        while ( !myDps.pressureAvailable()) {
+//        Serial.println("**Reset**");
+//        sensors_event_t  pressure_event;
+//        while ( !myDps.pressureAvailable()) {
           delay(1);
-        }
-        dps_pressure->getEvent(&pressure_event);
-        pressureInit = pressure_event.pressure;
+//        }
+//        dps_pressure->getEvent(&pressure_event);
+//        pressureInit = pressure_event.pressure;
       }
       else if (str.equals("unlock")) {
         mySerial.println("!unlock");
-        Serial.println("**unlock**");
+ //       Serial.println("**unlock**");
         sLock = false;
       }
       else if (str.equals("lock")) {
         mySerial.println("!lock");
-        Serial.println("**lock**");
+//        Serial.println("**lock**");
         sLock = true;
         RelayCount = 0;
       }
       else if (str.equals("relayon")) {
         mySerial.println("!RelayOn");
-        Serial.println("**RelayOn**");
+//        Serial.println("**RelayOn**");
         if (!sLock) {
           SensorCount = 150; //15秒
           RelayCount = 30; //3秒
@@ -284,13 +293,13 @@ void loop_Rcv() {
       }
       else if (str.equals("relayoff")) {
         mySerial.println("!RelayOff");
-        Serial.println("**RelayOff**");
+//        Serial.println("**RelayOff**");
         RelayCount = 0; //0秒-->Off
         digitalWrite(myRelay, LOW);
       }
       else if (str.equals("fast")) {
         mySerial.println("!fast");
-        Serial.println("**fast**");
+//        Serial.println("**fast**");
         SensorCount = 300; //30秒
       }
     }
