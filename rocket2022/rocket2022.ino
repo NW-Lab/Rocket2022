@@ -15,7 +15,6 @@ float pressureInit;
 #define mySerial Serial1
 #define myRelay D1
 
-
 //Status
 bool sLock = true;
 byte RelayCount = 0;
@@ -255,7 +254,8 @@ void loop_Rcv() {
       PcCount = 150; //受信したらPcCountを150(1.5秒)を追加
       str.toLowerCase();//小文字に変換
       if (str.equals("reset")) {
-        Serial.println("\n!!!Reset!!!");
+        mySerial.println("!reset");
+        Serial.println("**Reset**");
         sensors_event_t  pressure_event;
         while ( !myDps.pressureAvailable()) {
           delay(1);
@@ -264,28 +264,33 @@ void loop_Rcv() {
         pressureInit = pressure_event.pressure;
       }
       else if (str.equals("unlock")) {
-        Serial.println("\n***unLock***");
+        mySerial.println("!unlock");
+        Serial.println("**unlock**");
         sLock = false;
       }
       else if (str.equals("lock")) {
-        Serial.println("\n!!!Lock!!!");
+        mySerial.println("!lock");
+        Serial.println("**lock**");
         sLock = true;
         RelayCount = 0;
       }
       else if (str.equals("relayon")) {
-        Serial.println("\n***Relay On***");
+        mySerial.println("!RelayOn");
+        Serial.println("**RelayOn**");
         if (!sLock) {
           SensorCount = 150; //15秒
           RelayCount = 30; //3秒
         }
       }
       else if (str.equals("relayoff")) {
-        Serial.println("\n!!!Relay Off!!!");
+        mySerial.println("!RelayOff");
+        Serial.println("**RelayOff**");
         RelayCount = 0; //0秒-->Off
         digitalWrite(myRelay, LOW);
       }
       else if (str.equals("fast")) {
-        Serial.println("\n!!!Sensor Fast 30s!!!");
+        mySerial.println("!fast");
+        Serial.println("**fast**");
         SensorCount = 300; //30秒
       }
     }
