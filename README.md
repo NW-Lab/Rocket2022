@@ -14,7 +14,7 @@
 #### Board
  Seeed nRF52 mbed enable boards --> Seeed XIAO BLE sense
 #### Library
--   Seeed_Arduino_LSM6DS3 Library
+-   Seeed_Arduino_LSM6DS3 Library　https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3
 -   Adafruit DPS310
  
  
