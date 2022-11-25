@@ -69,16 +69,16 @@ void loop() {
   sensors_event_t temp_event, pressure_event;
   float pressure, temp;
   //Sensor用
-  mySerial.print("[{");
+  mySerial.print("{");
   mySerial.print("\"lock\":");
   if (sLock)mySerial.print("true");
   else mySerial.print("false");
   mySerial.print(",\"relay\":");
   if (RelayCount > 0)mySerial.print("on");
   else mySerial.print("off");
-  mySerial.println("}]");
+  mySerial.println("}");
 
-  mySerial.print("[{\"AccelX\":");
+  mySerial.print("{\"AccelX\":");
   mySerial.print(myIMU.readFloatAccelX(), 3);
   mySerial.print(',');
 
@@ -88,9 +88,9 @@ void loop() {
 
   mySerial.print("\"AccelZ\":");
   mySerial.print(myIMU.readFloatAccelZ(), 3);
-  mySerial.println("}]");
+  mySerial.println("}");
 
-  mySerial.print("[{\"GyroX\":");
+  mySerial.print("{\"GyroX\":");
   mySerial.print(myIMU.readFloatGyroX(), 3);
   mySerial.print(',');
 
@@ -100,7 +100,7 @@ void loop() {
 
   mySerial.print("\"GyroZ\":");
   mySerial.print(myIMU.readFloatGyroZ(), 3);
-  mySerial.println("}]");
+  mySerial.println("}");
 
 
   while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
@@ -110,7 +110,7 @@ void loop() {
   temp = temp_event.temperature;
   pressure = pressure_event.pressure;
 
-  mySerial.print("[{\"Temperature\":");
+  mySerial.print("{\"Temperature\":");
   mySerial.print(temp, 1);
   mySerial.print(',');
 
@@ -120,16 +120,17 @@ void loop() {
 
   mySerial.print("\"Height\":");
   mySerial.print(P2High(pressure, pressureInit, temp), 2);
-  mySerial.println("}]");
+  mySerial.println("}");
+  /**
+    mySerial.print("{\"RSSI\":");
+    mySerial.print(sRSSI, 2);
+    mySerial.print(',');
 
-  mySerial.print("[{\"RSSI\":");
-  mySerial.print(sRSSI, 2);
-  mySerial.print(',');
+    mySerial.print("\"Battery\":");
+    mySerial.print(sBattery, 2);
 
-  mySerial.print("\"Battery\":");
-  mySerial.print(sBattery, 2);
-
-  mySerial.println("}]");
+    mySerial.println("}");
+    **/
   /*
     //Sensor用
     Serial.print("[{");
@@ -218,30 +219,33 @@ void loop() {
     Serial.print("/ height: ");
     Serial.print(P2High(pressure, pressureInit, temp));
   *****/
-  if (SensorCount > 0) {
+  /**
+    if (SensorCount > 0) {
     //    delay(100 - 62);
     delay(100);
     SensorCount--;
-  } else {
+    } else {
     delay(1000);
-  }
-
+    }
+  **/
+  delay(100);
 }
 void loop_alive_LED() {
   // 内蔵LEDは、PullUpされているので反転動作
   if (sLock) {  //ロックされている場合は緑
     digitalWrite(LEDG, LOW);
+    digitalWrite(LEDR, HIGH);
     delay(100);
     if (PcCount != 0)digitalWrite(LEDG, HIGH);
     delay(100);
   }
   else {  //ロックが解除されている場合は赤
     digitalWrite(LEDR, LOW);
+    digitalWrite(LEDG, HIGH);
     delay(100);
     if (PcCount != 0)digitalWrite(LEDR, HIGH);
     delay(100);
   }
-
   if (PcCount != 0)PcCount--;
 }
 
@@ -305,6 +309,5 @@ void loop_Relay() {
   else {
     digitalWrite(myRelay, LOW);
   }
-
   delay(100);
 }
