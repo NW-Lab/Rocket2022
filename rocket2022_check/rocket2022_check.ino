@@ -74,9 +74,9 @@ void loop() {
   mySerial.print("\"lock\":");
   if (sLock)mySerial.print("true");
   else mySerial.print("false");
-  mySerial.print(",\"relay\":");
-  if (RelayCount > 0)mySerial.print("on");
-  else mySerial.print("off");
+  mySerial.print(",\"RelayOn\":");
+  if (RelayCount > 0)mySerial.print("true");
+  else mySerial.print("false");
   mySerial.println("}");
 
   mySerial.print("{\"AccelX\":");
