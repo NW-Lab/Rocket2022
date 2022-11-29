@@ -147,103 +147,6 @@ void loop() {
 
     mySerial.println("}");
     **/
-  /*
-    //Sensor用
-    Serial.print("[{");
-    Serial.print("\"lock\":");
-    Serial.print(sLock);
-    Serial.print(',');
-
-    Serial.print("\"AccelX\":");
-    Serial.print(myIMU.readFloatAccelX(),3);
-    Serial.print(',');
-
-    Serial.print("\"AccelY\":");
-    Serial.print(myIMU.readFloatAccelY()),3;
-    Serial.print(',');
-
-     Serial.print("\"AccelZ\":");
-    Serial.print(myIMU.readFloatAccelZ(),3);
-    Serial.print(',');
-
-     Serial.print("\"GyroX\":");
-    Serial.print(myIMU.readFloatGyroX(),3);
-    Serial.print(',');
-
-     Serial.print("\"GyroY\":");
-    Serial.print(myIMU.readFloatGyroY(),3);
-    Serial.print(',');
-
-     Serial.print("\"GyroZ\":");
-    Serial.print(myIMU.readFloatGyroZ(),3);
-    Serial.print(',');
-
-
-    while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
-     delay(1);
-    }
-    myDps.getEvents(&temp_event, &pressure_event);
-    temp = temp_event.temperature;
-    pressure = pressure_event.pressure;
-
-     Serial.print("\"Temperature\":");
-    Serial.print(temp,1);
-    Serial.print(',');
-
-     Serial.print("\"Pressure\":");
-    Serial.print(pressure,2);
-    Serial.print(',');
-
-     Serial.print("\"Height\":");
-    Serial.print(P2High(pressure, pressureInit, temp),2);
-    Serial.print(',');
-
-     Serial.print("\"RSSI\":");
-    Serial.print(sRSSI,2);
-    Serial.print(',');
-
-     Serial.print("\"Battery\":");
-    Serial.print(sBattery,2);
-
-    Serial.println("}]");
-  */
-  /*****
-    Serial.print(myIMU.readFloatAccelX(), 3);
-    Serial.print(',');
-    Serial.print(myIMU.readFloatAccelY(), 3);
-    Serial.print(',');
-    Serial.print(myIMU.readFloatAccelZ(), 3);
-    Serial.print(',');
-    Serial.print(myIMU.readFloatGyroX(), 3);
-    Serial.print(',');
-    Serial.print(myIMU.readFloatGyroY(), 3);
-    Serial.print(',');
-    Serial.print(myIMU.readFloatGyroZ(), 3);
-    Serial.println();
-
-    while (!myDps.temperatureAvailable() || !myDps.pressureAvailable()) {
-      delay(1);
-    }
-    myDps.getEvents(&temp_event, &pressure_event);
-    temp = temp_event.temperature;
-    pressure = pressure_event.pressure;
-    Serial.print("Temperature: ");
-    Serial.print(temp);
-    Serial.println(" degrees of Celsius");
-    Serial.print("/ Pressoure: ");
-    Serial.print(pressure);
-    Serial.print("/ height: ");
-    Serial.print(P2High(pressure, pressureInit, temp));
-  *****/
-  /**
-    if (SensorCount > 0) {
-    //    delay(100 - 62);
-    delay(100);
-    SensorCount--;
-    } else {
-    delay(1000);
-    }
-  **/
   delay(100);
 }
 void loop_alive_LED() {
@@ -315,7 +218,8 @@ void loop_Rcv() {
       }
     }
   }
-  yield();
+  delay(100);
+//  yield();
 }
 void loop_Relay() {
   if ((!sLock) && (RelayCount > 0)) {

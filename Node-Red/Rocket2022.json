@@ -1,0 +1,1786 @@
+[
+    {
+        "id": "ae3ca5164a65655f",
+        "type": "tab",
+        "label": "Serial Recive",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "681318f9e28bc1f3",
+        "type": "tab",
+        "label": "Control",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d5ec63cfb7d85598",
+        "type": "tab",
+        "label": "RecordSwitch",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "13aee0573f477beb",
+        "type": "tab",
+        "label": "Status",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1ab6709cefe16023",
+        "type": "tab",
+        "label": "InfluxDB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d93017b986e0cd89",
+        "type": "tab",
+        "label": "その他",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "66ea4fcd99e2226e",
+        "type": "serial-port",
+        "serialport": "/dev/ttyACM0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "\\n",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "ff6415b84d48e65f",
+        "type": "ui_tab",
+        "name": "Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "66637fbbe70a9b2c",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2c723b76cd6fc3ba",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "ff6415b84d48e65f",
+        "order": 1,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "54d04e46025dae18",
+        "type": "ui_group",
+        "name": "Status",
+        "tab": "ff6415b84d48e65f",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "51c2f9096743374f",
+        "type": "ui_group",
+        "name": "sukima",
+        "tab": "ff6415b84d48e65f",
+        "order": 2,
+        "disp": false,
+        "width": "2",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d99242c884e2edeb",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "local influxdb",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "7ce045e7d9f13150",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "\\n",
+        "responsetimeout": "1000"
+    },
+    {
+        "id": "4875154c0e463fd8",
+        "type": "ui_group",
+        "name": "隙間２",
+        "tab": "ff6415b84d48e65f",
+        "order": 4,
+        "disp": false,
+        "width": "2",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c212850e62b968d6",
+        "type": "ui_group",
+        "name": "Etc",
+        "tab": "ff6415b84d48e65f",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "625e0dd33eefd11a",
+        "type": "serial in",
+        "z": "ae3ca5164a65655f",
+        "name": "",
+        "serial": "7ce045e7d9f13150",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "484976fd764a81f6"
+            ]
+        ]
+    },
+    {
+        "id": "69f87efd84e25b08",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "JSON",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "484976fd764a81f6",
+        "type": "switch",
+        "z": "ae3ca5164a65655f",
+        "name": "種別を調べる",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "^[{]",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "regex",
+                "v": "^!",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "69f87efd84e25b08",
+                "baee0f7dc9a1cfe0"
+            ],
+            [
+                "be641d6f78ca0662"
+            ],
+            [
+                "a2d08fc6342573eb"
+            ]
+        ]
+    },
+    {
+        "id": "be641d6f78ca0662",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "Reply",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a2d08fc6342573eb",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "Message",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c87f63c29a234b34",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "73691edd2e2b0826",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "baee0f7dc9a1cfe0",
+        "type": "json",
+        "z": "ae3ca5164a65655f",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "73691edd2e2b0826",
+                "9622a7bbfe080e2b",
+                "63206b9ad4dd959e",
+                "4f926940a6c24d2f"
+            ]
+        ]
+    },
+    {
+        "id": "9622a7bbfe080e2b",
+        "type": "switch",
+        "z": "ae3ca5164a65655f",
+        "name": "RecoordSwitch",
+        "property": "RecordSwitch",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 880,
+        "y": 140,
+        "wires": [
+            [
+                "9aa711ed9bba5762",
+                "cf98b0de1859b596"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9aa711ed9bba5762",
+        "type": "debug",
+        "z": "ae3ca5164a65655f",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "63206b9ad4dd959e",
+        "type": "function",
+        "z": "ae3ca5164a65655f",
+        "name": "Lockされているか",
+        "func": "if(msg.payload.lock!=null){\n    if(msg.payload.RelayOn==true){\n        msg.payload=\"RelayOn\";\n    }else if(msg.payload.lock==true){\n        msg.payload=\"lock\";        \n    }else {\n        msg.payload=\"unlock\";\n    }\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 320,
+        "wires": [
+            [
+                "c87f63c29a234b34",
+                "2541e798c5240af1"
+            ]
+        ]
+    },
+    {
+        "id": "2541e798c5240af1",
+        "type": "link out",
+        "z": "ae3ca5164a65655f",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "c237b404559e6c97"
+        ],
+        "x": 1115,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4f926940a6c24d2f",
+        "type": "link out",
+        "z": "ae3ca5164a65655f",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "9c1aee14882932f9",
+            "16430b05c7b42fd1"
+        ],
+        "x": 825,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "cf98b0de1859b596",
+        "type": "link out",
+        "z": "ae3ca5164a65655f",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "b38f8cd19ca92a2c"
+        ],
+        "x": 1095,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a7c1b1b84d7b8f07",
+        "type": "ui_switch",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "label": "unLock",
+        "tooltip": "点火できるようにします。",
+        "group": "2c723b76cd6fc3ba",
+        "order": 2,
+        "width": "3",
+        "height": "2",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "86f6b91a354913c0",
+                "5773e49b2bf38d43"
+            ]
+        ]
+    },
+    {
+        "id": "86f6b91a354913c0",
+        "type": "switch",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "707b9a0d37fd555d"
+            ],
+            [
+                "600cd1b95767772b"
+            ]
+        ]
+    },
+    {
+        "id": "cb92d8a03a6e43f8",
+        "type": "serial out",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "serial": "7ce045e7d9f13150",
+        "x": 950,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "707b9a0d37fd555d",
+        "type": "template",
+        "z": "681318f9e28bc1f3",
+        "name": "Lock",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Lock",
+        "output": "str",
+        "x": 650,
+        "y": 60,
+        "wires": [
+            [
+                "cb92d8a03a6e43f8",
+                "71d52d00f94d0a84"
+            ]
+        ]
+    },
+    {
+        "id": "600cd1b95767772b",
+        "type": "template",
+        "z": "681318f9e28bc1f3",
+        "name": "unlock",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "unlock",
+        "output": "str",
+        "x": 630,
+        "y": 260,
+        "wires": [
+            [
+                "cb92d8a03a6e43f8",
+                "71d52d00f94d0a84"
+            ]
+        ]
+    },
+    {
+        "id": "6b4418cd96532801",
+        "type": "ui_button",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "group": "2c723b76cd6fc3ba",
+        "order": 4,
+        "width": "4",
+        "height": "4",
+        "passthru": false,
+        "label": "Fire",
+        "tooltip": "オレンジ色の時に動作します。押すと３秒RelayがOnになります。",
+        "color": "",
+        "bgcolor": "{{background}}",
+        "className": "",
+        "icon": "",
+        "payload": "relayon",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 730,
+        "y": 460,
+        "wires": [
+            [
+                "bf4af3e63baa8c94",
+                "215ce8cfeb4fd3d0"
+            ]
+        ]
+    },
+    {
+        "id": "bf4af3e63baa8c94",
+        "type": "serial out",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "serial": "7ce045e7d9f13150",
+        "x": 1010,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5773e49b2bf38d43",
+        "type": "function",
+        "z": "681318f9e28bc1f3",
+        "name": "sLockの状態",
+        "func": "if(msg.payload==true)flow.set(\"sLock\",false);\nelse flow.set(\"sLock\",true);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"sLock\",true);\nreturn ;",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c237b404559e6c97",
+        "type": "link in",
+        "z": "681318f9e28bc1f3",
+        "name": "link in 1",
+        "links": [
+            "2541e798c5240af1"
+        ],
+        "x": 235,
+        "y": 360,
+        "wires": [
+            [
+                "7c3fcace0aad36e0"
+            ]
+        ]
+    },
+    {
+        "id": "7c3fcace0aad36e0",
+        "type": "function",
+        "z": "681318f9e28bc1f3",
+        "name": "function 3",
+        "func": "if(msg.payload==\"lock\"){ //Lock\n    var newMsg = { background: \"LightGray\"  };\n    if(flow.get(\"sLock\")==true) {\n        return [null, newMsg];\n    }else{\n        //状態が合わなかったら再送(unlock)\n        msg.payload = \"unlock\";\n        return [msg, newMsg];\n    }\n}else if(msg.payload==\"unlock\"){  //unLock\n    var newMsg = {  background: \"Orange\"  };\n    if (flow.get(\"sLock\") == false) {\n        return [null, newMsg];\n    } else {\n        //状態が合わなかったら再送(lock)\n        msg.payload = \"lock\";\n        return [msg, newMsg];\n    }\n}else if(msg.payload==\"RelayOn\"){\n    var newMsg = { background: \"Red\" };\n        return [null, newMsg];\n}\n//return msg;",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nreturn[null,\"LightGray\"];",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 380,
+        "wires": [
+            [
+                "cb92d8a03a6e43f8"
+            ],
+            [
+                "6b4418cd96532801"
+            ]
+        ]
+    },
+    {
+        "id": "a4433a10ba82a97d",
+        "type": "inject",
+        "z": "681318f9e28bc1f3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "a7c1b1b84d7b8f07"
+            ]
+        ]
+    },
+    {
+        "id": "fd5fe60843673af8",
+        "type": "ui_text",
+        "z": "681318f9e28bc1f3",
+        "group": "2c723b76cd6fc3ba",
+        "order": 1,
+        "width": "5",
+        "height": "4",
+        "name": "注意書き",
+        "label": "発射ボタンの色は制御装置からの返り値で色が変わります。<br/>灰色はロック状態<br/>オレンジ色はロック解除状態<br/>赤色はリレーOnの状態<br/>1.unLockをONにします。<br/>2.発射ボタンがオレンジ色になったらボタンを押してください。",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 320,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "856a856fca270c49",
+        "type": "ui_text",
+        "z": "681318f9e28bc1f3",
+        "group": "51c2f9096743374f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "隙間",
+        "label": " ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 270,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "71d52d00f94d0a84",
+        "type": "debug",
+        "z": "681318f9e28bc1f3",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "6dfbdcafb9af99fc",
+        "type": "ui_text",
+        "z": "681318f9e28bc1f3",
+        "group": "2c723b76cd6fc3ba",
+        "order": 3,
+        "width": "5",
+        "height": "2",
+        "name": "空間",
+        "label": "----------------------------------------",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 570,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "215ce8cfeb4fd3d0",
+        "type": "debug",
+        "z": "681318f9e28bc1f3",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "fb1b6b9f598afd4b",
+        "type": "ui_text",
+        "z": "681318f9e28bc1f3",
+        "group": "4875154c0e463fd8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "隙間",
+        "label": " ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 270,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "28cb5f40ace9d935",
+        "type": "ui_switch",
+        "z": "d5ec63cfb7d85598",
+        "name": "",
+        "label": "Record",
+        "tooltip": "データを保存します。",
+        "group": "54d04e46025dae18",
+        "order": 2,
+        "width": "3",
+        "height": "2",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "ffaaaa",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "c853b985b7944e01"
+            ]
+        ]
+    },
+    {
+        "id": "c853b985b7944e01",
+        "type": "function",
+        "z": "d5ec63cfb7d85598",
+        "name": "function 1",
+        "func": "global.set(\"RecordSwitch\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f13ef0c48744366",
+        "type": "ui_text",
+        "z": "13aee0573f477beb",
+        "group": "54d04e46025dae18",
+        "order": 1,
+        "width": "5",
+        "height": "3",
+        "name": "注意書き",
+        "label": "RecordがOnのときはデータベースにデータを保存します。データの保存は約１秒おきです。高さは気圧より求めていますので、気圧が変化すると値が変わります。",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 500,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9c1aee14882932f9",
+        "type": "link in",
+        "z": "13aee0573f477beb",
+        "name": "link in 2",
+        "links": [
+            "4f926940a6c24d2f"
+        ],
+        "x": 125,
+        "y": 180,
+        "wires": [
+            [
+                "471ece7f7141a045",
+                "b3d3574a58ce4d5c"
+            ]
+        ]
+    },
+    {
+        "id": "471ece7f7141a045",
+        "type": "function",
+        "z": "13aee0573f477beb",
+        "name": "Heightのみ切り出します。",
+        "func": "if (msg.payload.Height!= null) {\n    msg.payload = msg.payload.Height + \" [m]\";\n    return msg;\n}\n//return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "c3c2123678d7a4b3",
+                "af7664c8d720d91c"
+            ]
+        ]
+    },
+    {
+        "id": "c3c2123678d7a4b3",
+        "type": "ui_text",
+        "z": "13aee0573f477beb",
+        "group": "54d04e46025dae18",
+        "order": 3,
+        "width": "4",
+        "height": "1",
+        "name": "height",
+        "label": "高さ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 590,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ad41840bc447d9b1",
+        "type": "ui_button",
+        "z": "13aee0573f477beb",
+        "name": "高さReset",
+        "group": "54d04e46025dae18",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "高さReset",
+        "tooltip": "今の気圧でリセットします",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "reset",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "b0557bb61406bbf6"
+            ]
+        ]
+    },
+    {
+        "id": "b0557bb61406bbf6",
+        "type": "serial out",
+        "z": "13aee0573f477beb",
+        "name": "",
+        "serial": "7ce045e7d9f13150",
+        "x": 610,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "84591f962a53dd25",
+        "type": "ui_text",
+        "z": "13aee0573f477beb",
+        "group": "54d04e46025dae18",
+        "order": 7,
+        "width": "6",
+        "height": "2",
+        "name": "空間",
+        "label": "----------------------------------------",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 710,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b3d3574a58ce4d5c",
+        "type": "function",
+        "z": "13aee0573f477beb",
+        "name": "角度計算",
+        "func": "if (((msg.payload.AccelX != null) && \n    (msg.payload.AccelY != null)) && \n    (msg.payload.AccelZ != null)){\n    var X = msg.payload.AccelX ;\n    var Y = msg.payload.AccelY;\n    var Z = msg.payload.AccelZ;\n//    var XY=Math.sqrt(Math.pow(X,2)+Math.pow(Y,2));\n    //msg.payload=Math.round((Math.atan2(X,Z)*180/Math.PI));\n  msg.payload = Math.round((Math.atan2(X, Z) * 180 / Math.PI));\n    //node.warn(\"X=\"+X+\"/Y=\"+Y+\"/XY=\" + XY);\n  //msg.payload = (Math.asin( XY/1)*180/Math.PI);\n  msg.payload+= \" [Deg]\"\n    return msg;\n    }\n\n//return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\n//msg.payload=\"\";",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 380,
+        "wires": [
+            [
+                "bf31ba63ada85e3c"
+            ]
+        ]
+    },
+    {
+        "id": "bf31ba63ada85e3c",
+        "type": "ui_text",
+        "z": "13aee0573f477beb",
+        "group": "54d04e46025dae18",
+        "order": 8,
+        "width": "4",
+        "height": "1",
+        "name": "角度",
+        "label": "角度",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 650,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "226fab440906ee8d",
+        "type": "inject",
+        "z": "13aee0573f477beb",
+        "name": "string",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": " ",
+        "payloadType": "str",
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "bf31ba63ada85e3c"
+            ]
+        ]
+    },
+    {
+        "id": "af7664c8d720d91c",
+        "type": "ui_chart",
+        "z": "13aee0573f477beb",
+        "name": "高さchart",
+        "group": "54d04e46025dae18",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0cc87f325d8933a",
+        "type": "ui_button",
+        "z": "13aee0573f477beb",
+        "name": "",
+        "group": "54d04e46025dae18",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Chart Clear",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "30a14fa3d94f2fe5"
+            ]
+        ]
+    },
+    {
+        "id": "30a14fa3d94f2fe5",
+        "type": "function",
+        "z": "13aee0573f477beb",
+        "name": "function 6",
+        "func": "msg.payload=[];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "af7664c8d720d91c"
+            ]
+        ]
+    },
+    {
+        "id": "221f75c9ef8da1ef",
+        "type": "debug",
+        "z": "1ab6709cefe16023",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b38f8cd19ca92a2c",
+        "type": "link in",
+        "z": "1ab6709cefe16023",
+        "name": "link in 3",
+        "links": [
+            "cf98b0de1859b596"
+        ],
+        "x": 85,
+        "y": 60,
+        "wires": [
+            [
+                "f3fdb1e116330a73"
+            ]
+        ]
+    },
+    {
+        "id": "deb4230be50b4422",
+        "type": "influxdb out",
+        "z": "1ab6709cefe16023",
+        "influxdb": "d99242c884e2edeb",
+        "name": "",
+        "measurement": "Rocket2022",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "UbeIot",
+        "bucket": "Data",
+        "x": 490,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f3fdb1e116330a73",
+        "type": "function",
+        "z": "1ab6709cefe16023",
+        "name": "function 4",
+        "func": "if(msg.payload.lock!=null){\n     var lockCount=context.get(\"lockCount\")||0;\n     lockCount+=1;\n     if(lockCount==10){\n          lockCount=0;\n          context.set(\"lockCount\",0);     \n          return msg;\n     }\n     context.set(\"lockCount\",lockCount);     \n}\n\nif (msg.payload.AccelX!= null) {\n     var accelCount = context.get(\"accelCount\") || 0;\n     accelCount += 1;\n     if (accelCount == 10) {\n          accelCount = 0;\n          context.set(\"accelCount\", 0);\n          return msg;\n     }\n     context.set(\"accelCount\", accelCount);\n}\n\nif (msg.payload.GyroX!= null) {\n     var gyroCount = context.get(\"gyroCount\") || 0;\n     gyroCount += 1;\n     if (gyroCount == 10) {\n          gyroCount = 0;\n          context.set(\"gyroCount\", 0);\n          return msg;\n     }\n     context.set(\"gyroCount\", gyroCount);\n}\n\nif (msg.payload.Pressure != null) {\n     var pressureCount = context.get(\"pressureCount\") || 0;\n     pressureCount += 1;\n     if (pressureCount == 10) {\n          pressureCount = 0;\n          context.set(\"pressureCount\", 0);\n          return msg;\n     }\n     context.set(\"pressureCount\", pressureCount);\n}\n\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "221f75c9ef8da1ef",
+                "deb4230be50b4422"
+            ]
+        ]
+    },
+    {
+        "id": "fba120f80f83b2d7",
+        "type": "debug",
+        "z": "1ab6709cefe16023",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "16430b05c7b42fd1",
+        "type": "link in",
+        "z": "d93017b986e0cd89",
+        "name": "link in 4",
+        "links": [
+            "4f926940a6c24d2f"
+        ],
+        "x": 155,
+        "y": 240,
+        "wires": [
+            [
+                "c76a6cd5a01a5216"
+            ]
+        ]
+    },
+    {
+        "id": "a4424f41ff531263",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "AccelX",
+        "func": "if(msg.payload.AccelX!=null){\n    msg.payload = msg.payload.AccelX;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "33abbca83f815781"
+            ]
+        ]
+    },
+    {
+        "id": "5d59e799c57e4751",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "AccelY",
+        "func": "if(msg.payload.AccelY!=null){\n    msg.payload = msg.payload.AccelY;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "a934cc2a0e5e70d8"
+            ]
+        ]
+    },
+    {
+        "id": "f2f855df7c03f192",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "AccelZ",
+        "func": "if(msg.payload.AccelZ!=null){\n    msg.payload = msg.payload.AccelZ;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "817bf5eecdf8cb77"
+            ]
+        ]
+    },
+    {
+        "id": "9fff6cda98cc6e8d",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "GyroX",
+        "func": "if(msg.payload.GyroX!=null){\n    msg.payload = msg.payload.GyroX;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "5110f8378be63864"
+            ]
+        ]
+    },
+    {
+        "id": "aac2449ebb350678",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "GyroY",
+        "func": "if(msg.payload.GyroX!=null){\n    msg.payload = msg.payload.GyroY;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "31bfb54a4d605872"
+            ]
+        ]
+    },
+    {
+        "id": "bd4577f56307d832",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "GyroZ",
+        "func": "if(msg.payload.GyroZ!=null){\n    msg.payload = msg.payload.GyroZ;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "f2f46ea22c5f045d"
+            ]
+        ]
+    },
+    {
+        "id": "31bfb54a4d605872",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "GyroY",
+        "group": "c212850e62b968d6",
+        "order": 5,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "GyroY",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-200",
+        "max": "200",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f2f46ea22c5f045d",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "GyroZ",
+        "group": "c212850e62b968d6",
+        "order": 6,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "GyroZ",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-200",
+        "max": "200",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 850,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5110f8378be63864",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "GyroX",
+        "group": "c212850e62b968d6",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "GyroX",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-200",
+        "max": "200",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "33abbca83f815781",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "AccelX",
+        "group": "c212850e62b968d6",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "gtype": "compass",
+        "title": "AccelX",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-1.5",
+        "max": "1.5",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 860,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "817bf5eecdf8cb77",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "AccelZ",
+        "group": "c212850e62b968d6",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "gtype": "compass",
+        "title": "AccelZ",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-1.5",
+        "max": "1.5",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 850,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a934cc2a0e5e70d8",
+        "type": "ui_gauge",
+        "z": "d93017b986e0cd89",
+        "name": "AccelY",
+        "group": "c212850e62b968d6",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "gtype": "compass",
+        "title": "AccelY",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-1.5",
+        "max": "1.5",
+        "colors": [
+            "#99c1f1",
+            "#8ff0a4",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "222f19c6a0ec3daa",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "Tempreture",
+        "func": "if(msg.payload.Temperature!=null){\n    msg.payload = msg.payload.Temperature;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 380,
+        "wires": [
+            [
+                "c9c69392bdd6d42d"
+            ]
+        ]
+    },
+    {
+        "id": "c9c69392bdd6d42d",
+        "type": "ui_chart",
+        "z": "d93017b986e0cd89",
+        "name": "温度",
+        "group": "c212850e62b968d6",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "label": "温度",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "1000",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "afd83599fd15ea0c",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "Pressure",
+        "func": "if(msg.payload.Pressure!=null){\n    msg.payload = msg.payload.Pressure;\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "c24dc31c7434a5fd",
+                "84b4846c906c85e3"
+            ]
+        ]
+    },
+    {
+        "id": "c24dc31c7434a5fd",
+        "type": "ui_chart",
+        "z": "d93017b986e0cd89",
+        "name": "気圧",
+        "group": "c212850e62b968d6",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "label": "気圧",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "2",
+        "removeOlderPoints": "1000",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 870,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "84b4846c906c85e3",
+        "type": "debug",
+        "z": "d93017b986e0cd89",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c76a6cd5a01a5216",
+        "type": "function",
+        "z": "d93017b986e0cd89",
+        "name": "function 5",
+        "func": "/** \nif(msg.payload.lock!=null){\n     var lockCount=context.get(\"lockCount\")||0;\n     lockCount+=1;\n     if(lockCount==5){\n          lockCount=0;\n          context.set(\"lockCount\",0);     \n          return msg;\n     }\n     context.set(\"lockCount\",lockCount);     \n}\n**/\n\nif (msg.payload.AccelX!= null) {\n     var accelCount = context.get(\"accelCount\") || 0;\n     accelCount += 1;\n     if (accelCount == 5) {\n          accelCount = 0;\n          context.set(\"accelCount\", 0);\n          return [msg,null,null];\n     }\n     context.set(\"accelCount\", accelCount);\n}\n\nif (msg.payload.GyroX!= null) {\n     var gyroCount = context.get(\"gyroCount\") || 0;\n     gyroCount += 1;\n     if (gyroCount == 5) {\n          gyroCount = 0;\n          context.set(\"gyroCount\", 0);\n          return [null,msg,null];\n     }\n     context.set(\"gyroCount\", gyroCount);\n}\n\nif (msg.payload.Pressure != null) {\n     var pressureCount = context.get(\"pressureCount\") || 0;\n     pressureCount += 1;\n     if (pressureCount == 10) {\n          pressureCount = 0;\n          context.set(\"pressureCount\", 0);\n          return [null,null,msg];\n     }\n     context.set(\"pressureCount\", pressureCount);\n}\n\nreturn;",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "a4424f41ff531263",
+                "5d59e799c57e4751",
+                "f2f855df7c03f192"
+            ],
+            [
+                "9fff6cda98cc6e8d",
+                "aac2449ebb350678",
+                "bd4577f56307d832"
+            ],
+            [
+                "222f19c6a0ec3daa",
+                "afd83599fd15ea0c"
+            ]
+        ]
+    },
+    {
+        "id": "4638125b0213f178",
+        "type": "ui_button",
+        "z": "d93017b986e0cd89",
+        "name": "RelayOff",
+        "group": "c212850e62b968d6",
+        "order": 8,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "[強制]RelayOff",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "Gray",
+        "className": "",
+        "icon": "",
+        "payload": "RelayOff",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "faab5519f35a41d0"
+            ]
+        ]
+    },
+    {
+        "id": "faab5519f35a41d0",
+        "type": "serial out",
+        "z": "d93017b986e0cd89",
+        "name": "",
+        "serial": "7ce045e7d9f13150",
+        "x": 650,
+        "y": 600,
+        "wires": []
+    }
+]
