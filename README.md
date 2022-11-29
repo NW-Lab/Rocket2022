@@ -1,6 +1,8 @@
 # Rocket2022
 発射実験用
 
+![概略図](Images/概略図.png)
+
 ## 使用機材
 ### PC側
 |物品名|規格|URL|備考|
@@ -35,22 +37,27 @@ TWELITEは、普通にUART+適当な変換器(3.3V)でもよかったかも。�
 
 マイコンと拡張基板が結構ゆるゆるだったのでマスキングテープで補強した。
 
+組み立て
+![受信機](Images/受信機説明.png)
 
 ## 開発環境
 ### PC側
 - Ubuntu 20.04LTS
 - Node-Red
--- Dashboard
-- InfluxDB
+  - node-red-dashboard
+  - node-red-node-serialport
+  - node-red-contrib-influxdb
+- InfluxDB(OSS) https://www.influxdata.com/
+- 
 ### ロケット側
 #### Arduino 1.8.19
-##### Board
- Seeed nRF52 mbed enable boards --> Seeed XIAO BLE sense
-##### Library
+Boardは、"Seeed nRF52 mbed enable boards --> Seeed XIAO BLE sense"を利用する。ただし、Board両方Installする必要あり。　https://wiki.seeedstudio.com/XIAO_BLE/
+
+Libraryは以下の2つ
 -   Seeed_Arduino_LSM6DS3 Library　https://github.com/Seeed-Studio/Seeed_Arduino_LSM6DS3
 -   Adafruit DPS310
  
- 
+
 ## リンク
 
 XIAO BLE https://wiki.seeedstudio.com/XIAO_BLE/
