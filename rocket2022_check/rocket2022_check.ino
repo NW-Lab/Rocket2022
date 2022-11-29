@@ -310,7 +310,8 @@ void loop_Rcv() {
       }
     }
   }
-  yield();
+  delay(100);
+//  yield();
 }
 void loop_Relay() {
   if ((!sLock) && (RelayCount > 0)) {
