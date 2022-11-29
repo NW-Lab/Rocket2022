@@ -2,6 +2,8 @@
 発射実験用
 
 <img src="Images/概略図.png" width="50%">
+<br/>
+<img src="Images/Dashboard.png" width="50%">
 
 ## 使用機材
 ### PC側
